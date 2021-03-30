@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dan and his  geoguessr skills</title>
+	
+	<title>My First Web Page</title>
+
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
 	
 </head>
-<body style="background-color:powderblue;">
-<center>
-<h1>Dan and his  geoguessr skills</h1>
-<h2>is he good?</h2>
-  
-<form>
-  <label for="fname">Yes or No:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <input type="submit" value="Submit">
-</form>
-  
-</center>
-<div id="mapid" style="width: 100%; height: 600px;"></div>
+<body>
+
+
+
+<div id="mapid"></div>
 <script>
 
-	var mymap = L.map('mapid').setView([51.130745567805796, -2.73402233040058], 15);
-	var marker = L.marker([51.130745567805796, -2.73402233040058]).addTo(mymap);
-	marker.bindPopup("<b>Strode College</b>").openPopup();
+	var mymap = L.map('mapid').setView([51.14471, -2.69866], 13);
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(mymap);
+	//L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+       	//maxZoom: 20,
+	//	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+	//		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	//	id: 'mapbox/streets-v11',
+	//	tileSize: 512,
+	//	zoomOffset: -1
+	//}).addTo(mymap);
+	
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	    maxNativeZoom: 19,	
+	    maxZoom: 20,
+	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);	
 
-</script>  
+        var marker = L.marker([51.14471, -2.69866]).addTo(mymap);
+	var college = L.marker([51.129852, -2.7334955]).addTo(mymap);
+	var college1 = L.marker([51.129952, -2.7334955]).addTo(mymap);
+	marker.bindPopup("<img class='popup' src='tor.jpg'/><br /><b>Glastonbury Tor</b>").openPopup();
+	college.bindPopup("<b>C Block</b><br>Strode College").openPopup();
+</script>
+
+
+
 </body>
 </html>
