@@ -54,8 +54,21 @@
 	var college1 = L.marker([51.129952, -2.7334955]).addTo(mymap);
 	marker.bindPopup("<img class='popup' src='tor.jpg'/><br /><b>Glastonbury Tor</b>").openPopup();
 	college.bindPopup("<b>C Block</b><br>Strode College").openPopup();
-</script>
+	
+	
+	map.on('draw:created', function (e) {
+    		var type = e.layerType,
+        		layer = e.layer;
 
+    		map.addLayer(layer);
+
+    		if (type === 'marker') {    
+        		layer.bindPopup('LatLng: ' + layer.getLatLng()).openPopup();
+    		}
+
+	});
+</script>
+		
 
 
 </body>
